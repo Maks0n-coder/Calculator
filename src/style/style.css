@@ -1,0 +1,147 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "OpenSans", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  background: #fff;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  max-width: 1920px;
+  width: 100%;
+  padding: 100px 160px;
+  margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: .3s ease-in-out;
+}
+
+img {
+  max-width: 100%;
+}
+
+svg,
+path,
+rect,
+input,
+.btn {
+  transition: .2s ease-in-out;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.hagy-wagi {
+  position: relative;
+}
+
+.hagy-wagi__img {
+  position: absolute;
+  width: 125px;
+  height: 125px;
+}
+
+.hagy-wagi__img_1 {
+  transform: rotate(50deg);
+  top: -90px;
+  right: -100px;
+}
+
+.hagy-wagi__img_2 {
+  transform: rotate(-50deg);
+  top: -90px;
+  left: -100px;
+}
+
+.hagy-wagi__img_3 {
+  transform: rotate(-130deg);
+  bottom: -90px;
+  left: -100px;
+}
+
+.hagy-wagi__img_4 {
+  transform: rotate(130deg);
+  bottom: -90px;
+  right: -100px;
+}
+
+
+.calculator {
+  max-width: 250px;
+  display: grid;
+  grid-column-gap: 18px;
+  grid-row-gap: 20px;
+  justify-content: center;
+  grid-template-columns: repeat(5, 1fr);
+  -webkit-box-shadow: 4px 3px 6px 31px rgba(10, 26, 215, 1);
+  -moz-box-shadow: 4px 3px 6px 31px rgba(10, 26, 215, 1);
+  box-shadow: 4px 3px 6px 31px rgba(10, 26, 215, 1);
+}
+
+.calculator_tablo-block {
+  grid-column: span 5;
+  display: flex;
+  justify-content: space-between;
+  min-height: 50px;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 26px;
+}
+
+.calculator__btn {
+  grid-column: span 1;
+  font-weight: bold;
+  padding: 10px;
+  -webkit-box-shadow: 4px 4px 8px 3px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 4px 4px 8px 3px rgba(34, 60, 80, 0.2);
+  box-shadow: 4px 4px 8px 3px rgba(34, 60, 80, 0.2);
+}
+
+.calculator__btn_result {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.calculator__btn_reset {
+  grid-column: span 2;
+}
+
+.calculator__btn:hover {
+  transition: .3s;
+  color: rgba(10, 26, 215, 1);
+}
