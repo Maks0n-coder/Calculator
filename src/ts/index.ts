@@ -1,68 +1,98 @@
-function number(): void {
-    let arrBtn = document.querySelectorAll('.calculator__btn_number')
-    let tablo1 = document.querySelector('.calculator__tablo_1')
-    let tablo2 = document.querySelector('.calculator__tablo_2') as HTMLInputElement
-    let tablo3 = document.querySelector('.calculator__tablo_3')
-    let button = arrBtn.forEach((btn) => {
-        let text = btn.textContent
-        btn.addEventListener('click', () => {
-            tablo2.textContent !== '' ? tablo3.append(text) : tablo1.append(text)
-        })
+import { number, sign, result, reset, save, loadLS, delet, dot } from './func.js'
+
+document.querySelectorAll('.calculator__btn_number').forEach((btn) => {
+    const text = btn.textContent
+    btn.addEventListener('click', () => {
+        number(text)
     })
-    return button
-}
+})
 
-number()
-
-function sign(): void {
-    let arrBtn = document.querySelectorAll('.calculator__btn_sign')
-    let tablo2 = document.querySelector('.calculator__tablo_2') as HTMLInputElement
-    let button = arrBtn.forEach((btn) => {
-        let text = btn.textContent
-        btn.addEventListener('click', () => {
-            if (tablo2.textContent === '') {
-                tablo2.append(text)
-            } else {
-                return
-            }
-        })
+document.querySelectorAll('.calculator__btn_sign').forEach((btn) => {
+    const text = btn.textContent
+    btn.addEventListener('click', () => {
+        sign(text)
     })
-    return button
-}
-
-sign()
-
-function result() {
-    let tablo1: string = document.querySelector('.calculator__tablo_1').textContent
-    let tablo2: string = document.querySelector('.calculator__tablo_2').textContent
-    let tablo3: string = document.querySelector('.calculator__tablo_3').textContent
-    let tablo4: Element = document.querySelector('.calculator__tablo_4')
-    let tablo5: Element = document.querySelector('.calculator__tablo_5')
-    let result = eval(tablo1 + tablo2 + tablo3)
-
-    if (tablo3 !== '') {
-        tablo4.textContent = '='
-        tablo5.textContent = result
-    }
-
-}
-
-function reset() {
-    let allTablo = document.querySelectorAll('.calculator__tablo')
-    allTablo.forEach((tablo) => {
-        tablo.textContent = ''
-    })
-}
+})
 
 document.querySelector('.calculator__btn_result').addEventListener('click', () => {
-    result()
+    const tablo3: string = document.querySelector('.calculator__tablo_3').textContent
+    if (tablo3 !== '' && tablo3.slice(-1) !== '.') {
+        result()
+        save()
+        reset()
+    } else {
+        return
+    }
+})
+
+document.querySelector('.calculator__btn_dot').addEventListener('click', () => {
+    dot()
 })
 
 document.querySelector('.calculator__btn_reset').addEventListener('click', () => {
     reset()
 })
 
+document.querySelector('.calculator__right-btn-clear').addEventListener('click', () => {
+    let clearResult = confirm('Очистить результаты')
 
+    if (clearResult) {
+        localStorage.clear()
+        location.reload()
+    }
 
+})
 
+document.querySelector('.calculator__btn_delete').addEventListener('click', () => {
+    delet()
 
+})
+
+document.addEventListener('keydown', (e) => {
+    const tablo3: string = document.querySelector('.calculator__tablo_3').textContent
+    let text = e.key;
+
+    type ArrNum = [string, string, string, string, string, string, string, string, string, string]
+    const arrNum: ArrNum = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    arrNum.find((item) => {
+        if (item === text) {
+            number(text)
+        }
+    })
+
+    type ArrSign = [string, string, string, string]
+    const arrSign: ArrSign = ['-', '*', '/', '+']
+    arrSign.filter((item) => {
+        if (item === text) {
+            switch (text) {
+                case '*':
+                    text = text.replace('*', '×');
+                    break
+                case '/':
+                    text = text.replace('/', '÷');
+                    break
+            }
+            sign(text)
+        }
+    })
+
+    if (e.key === 'Enter' && (tablo3 !== '' && tablo3.slice(-1) !== '.')) {
+        result()
+        save()
+        reset()
+    }
+
+    if (e.key === 'Backspace') {
+        delet()
+    }
+
+    if (e.key === ',' || e.key === '.') {
+        dot()
+    }
+
+    if (e.key === 'Delete') {
+        reset()
+    }
+})
+
+loadLS()

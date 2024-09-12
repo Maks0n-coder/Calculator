@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/style/normalize.css">
     <link rel="stylesheet" href="./src//style/style.css">
-    <script defer src="js/index.js"></script>
+    <script type="module" defer src="js/index.js"></script>
     <title>Calc</title>
+</head>
+
+<body>
     <div class="container">
-        <div class="hagy-wagi">
-            <img class="hagy-wagi__img hagy-wagi__img_1 " src="./src/img/hagi-wagi.png" alt="hagi-wagi">
-            <img class="hagy-wagi__img hagy-wagi__img_2 " src="./src/img/hagi-wagi.png" alt="hagi-wagi">
-            <img class="hagy-wagi__img hagy-wagi__img_3 " src="./src/img/hagi-wagi.png" alt="hagi-wagi">
-            <img class="hagy-wagi__img hagy-wagi__img_4 " src="./src/img/hagi-wagi.png" alt="hagi-wagi">
-            <div class="calculator">
+        <h1 class="title">Калькулятор</h1>
+        <div class="calculator">
+            <div class="calculator__left">
                 <div class="calculator_tablo-block">
                     <span class="calculator__tablo calculator__tablo_1"></span>
                     <span class="calculator__tablo calculator__tablo_2"></span>
@@ -25,8 +25,8 @@
                 <button class="calculator__btn calculator__btn_number">7</button>
                 <button class="calculator__btn calculator__btn_number">8</button>
                 <button class="calculator__btn calculator__btn_number">9</button>
-                <button class="calculator__btn calculator__btn_sign">/</button>
-                <button class="calculator__btn calculator__btn_sign">*</button>
+                <button class="calculator__btn calculator__btn_sign">÷</button>
+                <button class="calculator__btn calculator__btn_sign">×</button>
                 <button class="calculator__btn calculator__btn_number">4</button>
                 <button class="calculator__btn calculator__btn_number">5</button>
                 <button class="calculator__btn calculator__btn_number">6</button>
@@ -35,15 +35,25 @@
                 <button class="calculator__btn calculator__btn_number">1</button>
                 <button class="calculator__btn calculator__btn_number">2</button>
                 <button class="calculator__btn calculator__btn_number">3</button>
-                <button class="calculator__btn calculator__btn_result">=</button>
+                <button class="calculator__btn calculator__btn_delete">	&larr;</button>
                 <button class="calculator__btn calculator__btn_number">0</button>
                 <button class="calculator__btn calculator__btn_reset">СБРОС</button>
+                <button class="calculator__btn calculator__btn_dot">.</button>
+                <button class="calculator__btn calculator__btn_result">=</button>
+            </div>
+            <div class="calculator__right">
+                <h2 class="calculator__right-title">Результаты</h2>
+                <ul class="calculator__right-result content">
+                </ul>
+                <div class="calculator__right-btn">
+                    <button class="calculator__right-btn-clear">
+                        Очистить результаты
+                    </button>
+                </div>
+
             </div>
         </div>
     </div>
-</head>
-
-<body>
 
 </body>
 
