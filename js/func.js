@@ -19,18 +19,11 @@ export function sign(text) {
         tablo2.append(text);
     }
 }
-export function signMinus() {
-    const tablo1 = document.querySelector('.calculator__tablo_1');
-    if (tablo1.textContent === '') {
-        tablo1.append('-');
-    }
-}
 export function dot() {
     const tablo1 = document.querySelector('.calculator__tablo_1');
     const tablo2 = document.querySelector('.calculator__tablo_2').textContent;
     const tablo3 = document.querySelector('.calculator__tablo_3');
     const dotText = document.querySelector('.calculator__btn_dot').textContent;
-    console.log(tablo1.textContent.slice(-1));
     if ((tablo1.textContent !== '' && tablo2 === '') && !tablo1.textContent.includes(dotText)) {
         tablo1.append(dotText);
     }
@@ -59,17 +52,11 @@ export function result() {
     let resultFix = resultNum.toFixed(2);
     if (tablo3 !== '') {
         tablo4.textContent = '=';
+        tablo5.textContent = String(resultNum);
         if (tablo5.textContent.includes('.')) {
-            tablo5.textContent = resultFix;
-            if (resultFix.slice(-2) === '00') {
-                resultFix = resultFix.slice(0, -3);
+            if (tablo5.textContent.length > 5) {
+                tablo5.textContent = resultFix;
             }
-            if (resultFix.slice(-1) === '0') {
-                resultFix = resultFix.slice(0, -1);
-            }
-        }
-        else {
-            tablo5.textContent = String(result);
         }
     }
 }
